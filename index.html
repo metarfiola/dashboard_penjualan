@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Penjualan - 2023 vs 2024</title>
+    <!-- Menyertakan Chart.js dari CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Beberapa styling untuk mempercantik tampilan */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 14px; /* Ukuran font lebih kecil */
+        }
+
+        .legend div {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .legend div span {
+            width: 10px;
+            height: 10px;
+            margin-right: 6px; /* Jarak antara kotak warna dan teks lebih kecil */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Laporan Penjualan</h2>
+
+    <!-- Container untuk chart -->
+    <div class="chart-container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        // Mendapatkan elemen canvas untuk menggambar chart
+        var ctx = document.getElementById('myChart').getContext('2d');
+
+        // Warna colorful untuk setiap bar
+        var colors2023 = 'rgba(255, 99, 132, 0.5)'; // Warna untuk 2023
+        var colors2024 = 'rgba(54, 162, 235, 0.5)'; // Warna untuk 2024
+
+        // Membuat chart dengan Chart.js
+        var myChart = new Chart(ctx, {
+            type: 'bar', // Jenis chart, bisa diganti dengan 'line', 'pie', dll.
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], // Label untuk sumbu X (bulan)
+                datasets: [{
+                        label: '2023 Sales', // Label untuk dataset 2023
+                        data: [4017, 6135, 7091, 5841, 5036, 4547, 3467, 3970, 6313, 9207, 4900, 5800], // Data untuk sales tahun 2023
+                        backgroundColor: colors2023, // Menambahkan warna untuk 2023
+                        borderColor: 'rgba(255, 99, 132, 1)', // Warna border untuk 2023
+                        borderWidth: 1 // Lebar border
+                    },
+                    {
+                        label: '2024 Sales', // Label untuk dataset 2024
+                        data: [2416, 4136, 7935, 8004, 9505, 5026, 6108, 6343, 9404, 9280, 9287, 8689], // Data untuk sales tahun 2024
+                        backgroundColor: colors2024, // Menambahkan warna untuk 2024
+                        borderColor: 'rgba(54, 162, 235, 1)', // Warna border untuk 2024
+                        borderWidth: 1 // Lebar border
+                    }
+                ]
+            },
+            options: {
+                responsive: true, // Agar chart responsif
+                scales: {
+                    x: {
+                        beginAtZero: true // Agar sumbu X dimulai dari angka 0
+                    },
+                    y: {
+                        beginAtZero: true // Agar sumbu Y dimulai dari angka 0
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            font: {
+                                size: 12 // Ukuran font untuk legenda
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
